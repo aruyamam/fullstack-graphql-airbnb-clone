@@ -1,13 +1,13 @@
 import { Connection } from 'typeorm';
 import * as Redis from 'ioredis';
 import * as faker from 'faker';
+import { passwordNotLongEnough } from '@abb/common';
 
 import { User } from '../../../entity/User';
 import { TestClient } from '../../../utils/TestClient';
 import { createForgotPasswordLink } from '../../../utils/createForgotPasswordLink';
 import { forgotPasswordLockAccount } from '../../../utils/forgotPasswordLockAccount';
 import { forgotPasswordLockedError } from '../login/errorMessages';
-import { passwordNotLongEnough } from '../register/errorMessages';
 import { expiredKeyError } from './errorMessages';
 import { createTestConn } from '../../../testUtils/createTestConn';
 
