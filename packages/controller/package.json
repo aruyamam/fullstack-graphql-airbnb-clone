@@ -5,7 +5,10 @@
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf ./dist && tsc"
+    "build": "rimraf ./dist && tsc",
+    "introspect": "apollo-codegen introspect-schema http://localhost:4000 --output schema.json",
+    "generate": "apollo-codegen generate src/**/*.tsx --schema schema.json --target typescript --output src/operation-result-types.ts",
+    "gen-types": "npm run introspect && npm run generate"
   },
   "devDependencies": {
     "@types/node": "^12.0.8",
@@ -13,12 +16,17 @@
     "@types/react-dom": "^16.8.4",
     "@typescript-eslint/eslint-plugin": "^1.10.2",
     "@typescript-eslint/parser": "^1.10.2",
+    "apollo": "^2.13.1",
+    "apollo-codegen": "0.20.2",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-react": "^7.13.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
     "typescript": "^3.5.2"
+  },
+  "resolutions": {
+    "graphql": "14.3.1"
   },
   "dependencies": {
     "graphql": "^14.3.1",
